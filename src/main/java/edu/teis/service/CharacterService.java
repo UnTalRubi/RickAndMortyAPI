@@ -20,7 +20,7 @@ public class CharacterService {
     public void loadCharacters() throws IOException {
         List<Character> characters = repository.fetchCharacters();
         storage.saveAll(characters);
-        System.out.println("Cargados " + characters.size() + " personajes.");
+        System.out.println("\n\t|Rick & Morty API Loaded|\n");
     }
 
     public List<Character> getAllCharacters() {
@@ -33,6 +33,14 @@ public class CharacterService {
 
     public List<Character> findByName(String name) {
         return storage.findByNameContains(name);
+    }
+
+    public List<Character> findByGender(String gender) {
+        return storage.filterByGender(gender);
+    }
+
+    public List<Character> findByOrigin(String origin) {
+        return storage.filterByOrigin(origin);
     }
 
     public List<Character> filterByStatus(String status) {

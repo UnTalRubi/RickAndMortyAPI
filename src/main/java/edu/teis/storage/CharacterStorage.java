@@ -38,6 +38,16 @@ public class CharacterStorage {
                 .collect(Collectors.toList());
     }
 
+    public List<Character> filterByGender(String gender) {
+        if (gender == null || gender.isBlank()) {
+            return getAll();
+        }
+        String lowerCaseGender = gender.toLowerCase();
+        return characters.stream()
+                .filter(c -> c.getGender() != null && c.getGender().toLowerCase().equals(lowerCaseGender))
+                .collect(Collectors.toList());
+    }
+
     public List<Character> filterByStatus(String status) {
         if (status == null || status.isBlank()) {
             return getAll();
@@ -45,6 +55,16 @@ public class CharacterStorage {
         String lowerCaseName = status.toLowerCase();
         return characters.stream()
                 .filter(c -> c.getStatus() != null && c.getStatus().toLowerCase().equals(lowerCaseName))
+                .collect(Collectors.toList());
+    }
+
+    public List<Character> filterByOrigin(String origin) {
+        if (origin == null || origin.isBlank()) {
+            return getAll();
+        }
+        String lowerCaseOrigin = origin.toLowerCase();
+        return characters.stream()
+                .filter(c -> c.getOrigin() != null && c.getOrigin().toLowerCase().equals(lowerCaseOrigin))
                 .collect(Collectors.toList());
     }
 

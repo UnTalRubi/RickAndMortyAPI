@@ -44,7 +44,7 @@ public class Character {
         this.image = image;
     }
 
-    public Origin getOrigin() {return origin;}
+    public String getOrigin() {return origin.getName();}
     public void setOrigin(Origin origin) {
         this.origin = origin;
     }
