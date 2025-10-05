@@ -1,10 +1,13 @@
 package edu.teis.storage;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.teis.model.Character;
 
 public class CharacterStorage {
@@ -74,5 +77,11 @@ public class CharacterStorage {
 
     public int size() {
         return characters.size();
+    }
+
+    public void exportToJson(String filePath) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(filePath), characters);
+        System.out.println("Archivo JSON creado en: " + filePath);
     }
 }

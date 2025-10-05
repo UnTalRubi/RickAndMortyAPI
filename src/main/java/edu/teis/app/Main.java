@@ -34,7 +34,8 @@ public class Main {
             System.out.println("3. Buscar por estado");
             System.out.println("4. Buscar por origen");
             System.out.println("5. Buscar por género");
-            System.out.println("6. Salir");
+            System.out.println("6. Exportar personajes");
+            System.out.println("7. Salir");
 
             String option = scanner.nextLine().trim();
 
@@ -71,10 +72,17 @@ public class Main {
                     byGender.forEach(c -> System.out.println(c.getId() + "\t|\t" + c.getName() + "\t|\t" + c.getGender()));
                     break;
                 case "6":
+                    try {
+                        service.saveToJson("RickAndMortyCharacters.json");
+                    } catch (IOException e) {
+                        System.err.println("Error al exportar: " + e.getMessage());
+                    }
+                    break;
+                case "7":
                     running = false;
                     break;
                 default:
-                    System.out.println("Escoge del 1 al 6.");
+                    System.out.println("Escoge del 1 al 7.");
             }
         }
 

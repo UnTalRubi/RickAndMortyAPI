@@ -46,4 +46,8 @@ public class CharacterService {
     public List<Character> filterByStatus(String status) {
         return storage.filterByStatus(status);
     }
+
+    public void saveToJson(String filePath) throws IOException {
+        storage.exportToJson(filePath);
+    }
 }
